@@ -35,16 +35,3 @@ for event in longpoll.listen():
             else:
                 write_msg(event.user_id, "Не поняла вашего ответа...")
 
-
-# API-ключ созданный ранее
-token = "6a9c267cd469388709a9e9acaddbe0aa81a0abbf12239b3e597a31729ffbddb9c88e80a443554c918b8f7"
-
-# Авторизуемся как сообщество
-vk = vk_api.VkApi(token=token)
-
-# Работа с сообщениями
-longpoll = VkLongPoll(vk)
-#Войдем в основной цикл:
-
-# Основной цикл
-for event in longpoll.listen():
