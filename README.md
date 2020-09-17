@@ -30,4 +30,7 @@ To use the VK_photos_backuper you need:
 
 https://github.com/netology-code/py-advanced-diplom/tree/new_diplom
 
-
+Database: PostgreSQL
+Name: ADPY-14-VKbot
+User: vkbot_user
+Password: vkbot
