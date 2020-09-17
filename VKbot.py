@@ -83,3 +83,5 @@ class VkBot:
 
         else:
             return "Не понимаю о чем вы..."
+
+#test_comment
