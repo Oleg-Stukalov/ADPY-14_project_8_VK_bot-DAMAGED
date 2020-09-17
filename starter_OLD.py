@@ -1,4 +1,4 @@
-from vk_bot import VkBot
+from VKbot import VkBot
 
 print("Server started")
 for event in longpoll.listen():

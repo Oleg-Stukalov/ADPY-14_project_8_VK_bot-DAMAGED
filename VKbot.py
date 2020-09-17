@@ -1,31 +1,26 @@
 
-VK_API_KEY = '4bb471afcdc67d358a9236856a96088364fa3e57b7d02bfbe6fe6f5cbff25a1c45b9130f8117d88b90c52'
-
-
 class VkBot:
 
     def __init__(self, user_id):
         print("Создан объект бота!")
         self._USER_ID = user_id
         self._USERNAME = self._get_user_name_from_vk_id(user_id)
-
         self._COMMANDS = ["ПРИВЕТ", "ПОГОДА", "ВРЕМЯ", "ПОКА"]
 
+    # getting user name
     def _get_user_name_from_vk_id(self, user_id):
         request = requests.get("https://vk.com/id" + str(user_id))
         bs = bs4.BeautifulSoup(request.text, "html.parser")
-
         user_name = self._clean_all_tag_from_str(bs.findAll("title")[0])
-
         return user_name.split()[0]
 
-    # Получение времени:
+    # getting time
     def _get_time(self):
         request = requests.get("https://my-calend.ru/date-and-time-today")
         b = bs4.BeautifulSoup(request.text, "html.parser")
         return self._clean_all_tag_from_str(str(b.select(".page")[0].findAll("h2")[1])).split()[1]
 
-    # Получение погоды
+    # getting weather
     def _get_weather(city: str = "санкт-петербург") -> list:
         request = requests.get("https://sinoptik.com.ru/погода-" + city)
         b = bs4.BeautifulSoup(request.text, "html.parser")
@@ -44,11 +39,9 @@ class VkBot:
         temp = b.select('.rSide .description')
         weather = temp[0].getText()
         result = result + weather.strip()
-
         return result
 
-    # Метод для очистки от ненужных тэгов
-
+    # tags clearance
     @staticmethod
     def _clean_all_tag_from_str(string_line):
         """
@@ -72,20 +65,19 @@ class VkBot:
 
 
     def new_message(self, message):
-
-        # Привет
+        # hello
         if message.upper() == self._COMMANDS[0]:
             return f"Привет-привет, {self._USERNAME}!"
 
-        # Погода
+        # weather
         elif message.upper() == self._COMMANDS[1]:
             return self._get_weather()
 
-        # Время
+        # Time
         elif message.upper() == self._COMMANDS[2]:
             return self._get_time()
 
-        # Пока
+        # Bye
         elif message.upper() == self._COMMANDS[3]:
             return f"Пока-пока, {self._USERNAME}!"
 
