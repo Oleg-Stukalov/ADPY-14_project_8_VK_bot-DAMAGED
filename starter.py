@@ -2,13 +2,13 @@ from random import randrange
 import vk_api
 from vk_api.longpoll import VkLongPoll, VkEventType
 from VKbot import VkBot
+from tokens import TOKEN_VK, VK_API_KEY
 
-# API VK group key (VK_API_KEY)
-token = '4bb471afcdc67d358a9236856a96088364fa3e57b7d02bfbe6fe6f5cbff25a1c45b9130f8117d88b90c52'
-#token = input('Token: ')
+#TOKEN_VK = input('Введите токен приложения ВК (TOKEN_VK): ')
+#VK_API_KEY = input('Введите токен API (VK_API_KEY): ')
 
 # Authorization as group
-vk = vk_api.VkApi(token=token)
+vk = vk_api.VkApi(token=VK_API_KEY)
 
 # work with messages
 longpoll = VkLongPoll(vk)

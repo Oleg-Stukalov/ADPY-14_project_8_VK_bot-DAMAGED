@@ -1,4 +1,6 @@
 
+OAUTH_VK_URL = 'https://oauth.vk.com/authorize'
+
 class VkBot:
 
     def __init__(self, user_id):
