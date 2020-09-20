@@ -2,7 +2,7 @@ from random import randrange
 import vk_api
 from vk_api.longpoll import VkLongPoll, VkEventType
 from VKbot import VkBot
-111
+
 # API VK group key (VK_API_KEY)
 token = '4bb471afcdc67d358a9236856a96088364fa3e57b7d02bfbe6fe6f5cbff25a1c45b9130f8117d88b90c52'
 #token = input('Token: ')
